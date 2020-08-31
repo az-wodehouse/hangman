@@ -33,6 +33,7 @@ def hangman(wrong_allowed=5):
         game.guessed.append(guess)
         if guess not in game.word:
             game.wrong_left -= 1
+        prettyprint()
 
     def win_check():
         return all(x in game.guessed for x in game.word)
@@ -41,7 +42,6 @@ def hangman(wrong_allowed=5):
     prettyprint()
     while game.wrong_left >= 0 and not win_check():
         take_input()
-        prettyprint()
     if win_check():
         print("You win!")
     else:
