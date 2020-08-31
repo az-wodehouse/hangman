@@ -39,14 +39,12 @@ def hangman(wrong_allowed=5):
 
     game = State(word=choice(WORDLIST), guessed=[], wrong_left=wrong_allowed)
     prettyprint()
-    while game.wrong_left >= 0:
+    while game.wrong_left >= 0 and not win_check():
         take_input()
         prettyprint()
-        if win_check():
-            break
+    if win_check():
+        print("You win!")
     else:
         print("Take the L, my guy. The word was: " + game.word)
-        return
-    print("You win!")
 
 hangman()
